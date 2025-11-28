@@ -22,6 +22,14 @@ fi
 
 cd "$APP_DIR"
 
+mkdir -p storage/framework/sessions
+mkdir -p storage/framework/cache
+mkdir -p storage/framework/views
+mkdir -p storage/logs
+chown -R lwisp:www-data storage bootstrap
+find storage bootstrap/cache -type d -exec chmod 775 {} \;
+find storage bootstrap/cache -type f -exec chmod 664 {} \;
+
 echo ">>> [1/4] Ensure scheduler cron entry..."
 CRON_LINE="* * * * * www-data $PHP_BIN $APP_DIR/artisan schedule:run >> /dev/null 2>&1"
 ( crontab -u www-data -l 2>/dev/null | grep -Fv 'artisan schedule:run' ; echo "$CRON_LINE" ) | crontab -u www-data -

@@ -130,7 +130,7 @@ BROADCAST_DRIVER=log
 CACHE_DRIVER=file
 FILESYSTEM_DISK=local
 QUEUE_CONNECTION=database
-SESSION_DRIVER=file
+SESSION_DRIVER=database
 SESSION_LIFETIME=120
 
 MEMCACHED_HOST=127.0.0.1
@@ -185,6 +185,12 @@ if [ -f "$SEED_CORE" ]; then
 else
   echo "WARNING: Seed file $SEED_CORE not found. Skipping core seeds."
 fi
+
+echo "Back safeguard....May removed in later versions"
+mkdir -p resources/views
+mkdir -p storage/framework/views
+php artisan config:clear || true
+
 
 echo ">>> Laravel optimizations..."
 php artisan storage:link || true
