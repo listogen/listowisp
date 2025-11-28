@@ -1,0 +1,39 @@
+/vendor
+/node_modules
+/public/build
+/public/hot
+/public/storage
+/storage/*.key
+/storage/logs
+/storage/framework/cache
+/storage/framework/sessions
+/storage/framework/views
+/storage/framework/testing
+
+.env
+.env.*
+!.env.example
+
+# IDE / OS
+.idea
+.vscode
+*.swp
+.DS_Store
+
+# npm / yarn
+npm-debug.log
+yarn-error.log
+pnpm-lock.yaml
+
+# PHPUnit result cache
+.phpunit.result.cache
+
+# Composer lock is usually committed for apps; keep it:
+# composer.lock
+
+# Our custom stuff we DO want to track:
+!/database/schema
+!/database/schema/**
+!/database/seeds
+!/database/seeds/**
+
